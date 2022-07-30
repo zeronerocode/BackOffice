@@ -4,11 +4,14 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Member;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Imports\MembersImport;
+use App\Exports\UsersExport;
 
 class MemberController extends Controller
 {
     public function index (){
-        $members = Member::oldest()->get();
+        $members = Member::oldest()->paginate(10);
         return view('member.index', compact('members'));
     }
 
@@ -86,5 +89,11 @@ class MemberController extends Controller
             //redirect dengan pesan error
             return redirect()->route('member.index')->with(['error' => 'Data Gagal Dihapus!']);
         }
+    }
+
+    public function fileImport(Request $request)
+    {
+        Excel::import(new MembersImport, $request->file('file')->store('temp'));
+        return back();
     }
 }

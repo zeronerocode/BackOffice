@@ -28,4 +28,6 @@ Route::resource('user', UserController::class);
 Route::resource('group', GroupController::class);
 Route::resource('member', MemberController::class);
 
+Route::post('file-import', [MemberController::class, 'fileImport'])->name('file-import');
+
 require __DIR__.'/auth.php';
