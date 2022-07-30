@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\GroupController;
+use App\Http\Controllers\MemberController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,17 +26,6 @@ Route::get('/dashboard', function () {
 
 Route::resource('user', UserController::class);
 Route::resource('group', GroupController::class);
-
-// Route::get('/group',[GroupController::class,'index'])
-//     ->name('group');
-
-// Route::get('/group/{group}',[GroupController::class,'edit'])
-//     ->name('group.edit');
-
-// Route::post('/group/{group}',[GroupController::class,'update'])
-//     ->name('group.update');
-
-// Route::delete('/group/{group}',[GroupController::class,'destroy'])
-//     ->name('group.destroy');
+Route::resource('member', MemberController::class);
 
 require __DIR__.'/auth.php';
