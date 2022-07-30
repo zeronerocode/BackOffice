@@ -11,7 +11,7 @@ use App\Exports\UsersExport;
 class MemberController extends Controller
 {
     public function index (){
-        $members = Member::oldest()->paginate(10);
+        $members = Member::oldest()->paginate(20);
         return view('member.index', compact('members'));
     }
 
