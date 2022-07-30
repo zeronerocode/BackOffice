@@ -22,12 +22,20 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
-Route::get('/user', [UserController::class, 'index'])
-->name('user');
+Route::resource('user', UserController::class);
 
-Route::get('/user/create', [UserController::class, 'create'])
-->name('createuser');
+// Route::get('/user', [UserController::class, 'index'])
+// ->name('user');
 
-Route::post('/user/create', [UserController::class, 'store']);
+// Route::get('/user/create', [UserController::class, 'create'])
+// ->name('createuser');
+
+// Route::post('createuser', [UserController::class, 'store']);
+
+// Route::get('/user/{user}/edit',[UserController::class,'edit'])
+// ->name('edituser');
+
+// Route::post('edituser',[UserController::class,'update']);
+
 
 require __DIR__.'/auth.php';

@@ -21,19 +21,23 @@
                       </thead>
                       <tbody>
                         <!-- row 1 -->
-                        @forelse ($users as $u)
+                        @forelse ($users as $user)
                         <tr>
-                            <th>{{$u->id}}</th>
-                            <td>{{$u->name}}</td>
-                            <td>{{$u->email}}</td>
+                            <th>{{$user->id}}</th>
+                            <td>{{$user->name}}</td>
+                            <td>{{$user->email}}</td>
                             <td>
-                              <button class="btn btn-info">Edit</button>
-                              <button class="btn btn-error">Delete</button>
+                                <form onsubmit="return confirm('Apakah Anda Yakin ?');" action="{{ route('user.destroy', $user->id) }}" method="POST">
+                                    <a href="{{ route('user.edit', $user) }}" class="btn btn-sm btn-primary">EDIT</a>
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-sm btn-danger">HAPUS</button>
+                                </form>
                             </td>
                           </tr>
                           @empty
                             <div class="alert alert-danger">
-                            Data Blog belum Tersedia.
+                            Data User belum Tersedia.
                             </div>
                         @endforelse
                       </tbody>
