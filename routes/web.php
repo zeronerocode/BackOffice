@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\GroupController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,19 +24,18 @@ Route::get('/dashboard', function () {
 })->middleware(['auth'])->name('dashboard');
 
 Route::resource('user', UserController::class);
+Route::resource('group', GroupController::class);
 
-// Route::get('/user', [UserController::class, 'index'])
-// ->name('user');
+// Route::get('/group',[GroupController::class,'index'])
+//     ->name('group');
 
-// Route::get('/user/create', [UserController::class, 'create'])
-// ->name('createuser');
+// Route::get('/group/{group}',[GroupController::class,'edit'])
+//     ->name('group.edit');
 
-// Route::post('createuser', [UserController::class, 'store']);
+// Route::post('/group/{group}',[GroupController::class,'update'])
+//     ->name('group.update');
 
-// Route::get('/user/{user}/edit',[UserController::class,'edit'])
-// ->name('edituser');
-
-// Route::post('edituser',[UserController::class,'update']);
-
+// Route::delete('/group/{group}',[GroupController::class,'destroy'])
+//     ->name('group.destroy');
 
 require __DIR__.'/auth.php';

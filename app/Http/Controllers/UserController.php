@@ -33,7 +33,7 @@ class UserController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
-        return redirect()->route('user')->with(['success' => 'Data Berhasil Disimpan!']);
+        return redirect()->route('user.index')->with(['success' => 'Data Berhasil Disimpan!']);
     }
 
     public function edit(User $user)
